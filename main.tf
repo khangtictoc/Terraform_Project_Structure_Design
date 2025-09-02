@@ -22,20 +22,23 @@ module "vnet" {
   source  = "app.terraform.io/example-org-15045d/vnet/azurerm"
   version = "1.0.0"
 
-  enabled             = true
-  name                = "test"
-  location            = "Korea South"
-  resource_group_name = "sample-labs"
-  address_space       = ["10.0.0.0/16"]
+  vnet = {
+    enabled             = true
+    name                = "test"
+    location            = "Korea South"
+    resource_group_name = "sample-labs"
+    address_space       = ["10.0.0.0/16"]
+    
+    subnets = [
+        {
+        name             = "subnet1"
+        address_prefixes = ["10.0.1.0/24"]
+        },
+        {
+        name             = "subnet2"
+        address_prefixes = ["10.0.2.0/24"]
+        }
+    ]
+  }
   
-  subnets = [
-    {
-      name             = "subnet1"
-      address_prefixes = ["10.0.1.0/24"]
-    },
-    {
-      name             = "subnet2"
-      address_prefixes = ["10.0.2.0/24"]
-    }
-  ]
 }
