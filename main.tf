@@ -40,5 +40,8 @@ module "vnet" {
         }
     ]
   }
+  tags = {
+    "Project" = "MyProject"
+  }
   
 }
